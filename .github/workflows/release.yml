@@ -1,0 +1,42 @@
+name: Build AppImage
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "5 */12 * * *"
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    name: Postman AppImage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Postman
+        run: |
+          bash build.sh
+          echo "$POSTMAN_VERSION"
+      - name: Check version
+        uses: mukunku/tag-exists-action@v1.0.0
+        id: check_tag
+        with:
+          tag: ${{ env.POSTMAN_VERSION }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload artifact
+        if: ${{ !steps.check_tag.outputs.exists }}
+        uses: actions/upload-artifact@v1
+        with:
+          name: Postman.AppImage
+          path: 'dist'
+      - name: Release
+        if: ${{ !steps.check_tag.outputs.exists }}
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          title: Postman ${{ env.POSTMAN_VERSION }} AppImage
+          automatic_release_tag: ${{ env.POSTMAN_VERSION }}
+          prerelease: false
+          files: |
+            dist/
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
