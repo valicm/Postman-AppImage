@@ -31,7 +31,7 @@ jobs:
           name: Postman.AppImage
           path: 'dist'
       - name: Release
-        if: ${{ !steps.check_tag.outputs.exists }} == "false"
+        if: ${{ steps.check_tag.outputs.exists }} == "false"
         uses: marvinpinto/action-automatic-releases@latest
         with:
           title: Postman ${{ env.POSTMAN_VERSION }} AppImage
