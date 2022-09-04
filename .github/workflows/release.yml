@@ -25,13 +25,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload artifact
-        if: ${{ !steps.check_tag.outputs.exists }}
+        if: ${{ steps.check_tag.outputs.exists }} == "false"
         uses: actions/upload-artifact@v1
         with:
           name: Postman.AppImage
           path: 'dist'
       - name: Release
-        if: ${{ !steps.check_tag.outputs.exists }}
+        if: ${{ !steps.check_tag.outputs.exists }} == "false"
         uses: marvinpinto/action-automatic-releases@latest
         with:
           title: Postman ${{ env.POSTMAN_VERSION }} AppImage
