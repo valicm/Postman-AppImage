@@ -16,14 +16,14 @@ jobs:
       build: ${{ steps.check.outputs.build }}
     steps:
       - uses: actions/checkout@v2
-      - name: Build Postman
+      - name: Check version
         id: check
         run: |
           bash version.sh
   build:
     name: Postman AppImage Build
     needs: version
-    if: ${{ needs.version.outputs.build == 1 }}
+    if: ${{ needs.version.outputs.build == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
