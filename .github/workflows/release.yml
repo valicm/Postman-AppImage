@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      version: ${{ steps.check.outputs.build }}
+      build: ${{ steps.check.outputs.build }}
     steps:
       - uses: actions/checkout@v2
       - name: Build Postman
