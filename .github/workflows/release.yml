@@ -8,8 +8,18 @@ on:
       - "main"
 
 jobs:
+  version:
+    name: Postman AppImage Version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Postman
+        run: |
+          bash version.sh
   build:
     name: Postman AppImage Build
+    needs: [version]
+    if: ${{ env.BUILD_NEEDED == '1' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
