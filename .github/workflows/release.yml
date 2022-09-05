@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      build: ${{ steps.check.outputs.build }}
+      create: ${{ steps.check.outputs.create }}
     steps:
       - uses: actions/checkout@v2
       - name: Check version
@@ -23,12 +23,13 @@ jobs:
   build:
     name: Postman AppImage Build
     needs: version
-    if: ${{ needs.version.outputs.build == 'true' }}
+    if: ${{ needs.version.outputs.create == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Build Postman
         run: |
+          echo ${{ needs.version.outputs.create == 'true' }}
           bash build.sh
           echo "$POSTMAN_VERSION"
       - name: Upload artifact
