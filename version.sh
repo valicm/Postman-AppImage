@@ -36,6 +36,8 @@ GH_USER="$( echo "$GITHUB_REPOSITORY" | grep -o ".*/" | head -c-2 )"
 GH_REPO="$( echo "$GITHUB_REPOSITORY" | grep -o "/.*" | cut -c2- )"
 RELEASE_VERSION=$(gh api -H "Accept: application/vnd.github+json" /repos/"$GH_USER"/"$GH_REPO"/releases/latest | jq -r  ".name" | sed 's/Postman AppImage //g')
 
+echo "$VERSION";
+echo "$RELEASE_VERSION";
 if [ "$VERSION" = "$RELEASE_VERSION" ]; then
     echo "false";
     echo "::set-output name=create::false"
