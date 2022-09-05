@@ -23,7 +23,7 @@ jobs:
   build:
     name: Postman AppImage Build
     needs: [version]
-    if: ${{needs.version.outputs.build}} == 1
+    if: ${{ needs.version.outputs.build == '1' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
