@@ -37,7 +37,7 @@ GH_REPO="$( echo "$GITHUB_REPOSITORY" | grep -o "/.*" | cut -c2- )"
 RELEASE_VERSION=$(gh api -H "Accept: application/vnd.github+json" /repos/"$GH_USER"/"$GH_REPO"/releases/latest | jq -r  ".name" | sed 's/Postman AppImage //g')
 
 if [ "$VERSION" = "$RELEASE_VERSION" ]; then
-    echo "BUILD_NEEDED=0" >> "$GITHUB_ENV"
+    echo "::set-output name=build::0"
 else
-    echo "BUILD_NEEDED=1" >> "$GITHUB_ENV"
+    echo "::set-output name=build::1"
 fi

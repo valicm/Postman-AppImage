@@ -11,15 +11,19 @@ jobs:
   version:
     name: Postman AppImage Version
     runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      version: ${{ steps.check.outputs.build }}
     steps:
       - uses: actions/checkout@v2
       - name: Build Postman
+        id: check
         run: |
           bash version.sh
   build:
     name: Postman AppImage Build
     needs: [version]
-    if: ${{ env.BUILD_NEEDED == '1' }}
+    if: ${{needs.version.outputs.build}} == 1
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
