@@ -14,6 +14,8 @@ jobs:
     # Map a step output to a job output
     outputs:
       create: ${{ steps.check.outputs.create }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - name: Check version
