@@ -31,7 +31,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Postman
         run: |
-          echo ${{ needs.version.outputs.create == 'true' }}
           bash build.sh
           echo "$POSTMAN_VERSION"
       - name: Upload artifact

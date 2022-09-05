@@ -45,7 +45,6 @@ VERSION=$(echo "$PACKAGE" | jq -r  ".version")
 
 echo "POSTMAN_VERSION=$VERSION" >> "$GITHUB_ENV"
 
-
 echo "==> Fetch default AppRun"
 wget -O $APP_DIRECTORY/AppRun https://raw.githubusercontent.com/AppImage/AppImageKit/master/resources/AppRun
 chmod +x $APP_DIRECTORY/AppRun
