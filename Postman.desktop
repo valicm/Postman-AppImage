@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Postman
-Exec=Postman %u
-Type=Application
-Icon=Postman
-StartupWMClass=Postman
-Categories=Development;
-Comment=Postman REST Client

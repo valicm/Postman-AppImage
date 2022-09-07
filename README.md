@@ -7,6 +7,8 @@
 ## Get Started
 
 #### [Download the latest release](https://github.com/valicm/Postman-AppImage/releases/latest)
+- stable release only
+- supports update of the AppImage
 
 ### Executing
 #### File Manager
@@ -24,3 +26,7 @@ Use AppImageLauncher for better desktop integration ==> [download AppImageLaunch
 chmod +x Postman-*.AppImage
 ./Postman-*.AppImage
 ```
+
+#### Build
+The AppImage is built from .tar.gz DBeaver package by GitHub Continuous Integration using this
+bash script https://github.com/valicm/appimage-bash.
