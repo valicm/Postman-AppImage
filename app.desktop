@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Postman
+GenericName=Postman
 Exec=Postman %u
 Type=Application
 Icon=Postman
