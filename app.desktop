@@ -7,8 +7,3 @@ Icon=Postman
 StartupWMClass=Postman
 Categories=Development;
 Comment=Postman REST Client
-
-VersionUrl=https://dl.pstmn.io/download/latest/linux64
-VersionFile=app/resources/app/package.json
-VersionBash=jq -r  .version
-VersionIcon=icon_128x128.png

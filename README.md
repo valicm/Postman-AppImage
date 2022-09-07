@@ -28,5 +28,5 @@ chmod +x Postman-*.AppImage
 ```
 
 #### Build
-The AppImage is built from .tar.gz DBeaver package by GitHub Continuous Integration using this
+The AppImage is built from .tar.gz Postman package by GitHub Continuous Integration using this
 bash script https://github.com/valicm/appimage-bash.
