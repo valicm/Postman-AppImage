@@ -24,7 +24,7 @@ jobs:
           version_url: 'https://dl.pstmn.io/download/latest/linux64'
           version_file: 'app/resources/app/package.json'
           version_bash: 'jq -r  .version'
-          version_icon: 'app/resources/app/assets/icon.png'
+          version_icon: 'icon.png'
       - name: Upload artifact
         if: ${{ env.APP_UPDATE_NEEDED == 'true' }}
         uses: actions/upload-artifact@v4
