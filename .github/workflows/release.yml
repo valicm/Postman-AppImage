@@ -27,7 +27,7 @@ jobs:
             [Desktop Entry]
             Name=Postman
             GenericName=Postman
-            Exec=Postman %u
+            Exec=app/Postman %u
             Type=Application
             Icon=Postman
             StartupWMClass=Postman
@@ -35,7 +35,7 @@ jobs:
             Comment=Postman REST Client
           version_url: 'https://dl.pstmn.io/download/latest/linux64'
           version_file: 'app/resources/app/package.json'
-          version_icon: 'icon.png'
+          version_icon: 'app/resources/app/assets/icon.png'
           publish_releases: 'true'
           versioned_releases: 'true'
       - name: Upload build artifacts
